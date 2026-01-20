@@ -29,7 +29,7 @@ test.describe('Shopping workflow', () => {
     let formPage2: FormPage2;
     let confirmPage: ConfirmPage;
 
-    const product1 = products.backpack;
+    const product = products.backpack;
   
     test.beforeEach(async ({ page }) => {        
         productsPage = new ProductsPage(page);
@@ -49,18 +49,18 @@ test.describe('Shopping workflow', () => {
         await helper.CheckPageUrl(page, pageurl['products-page']);
 
         // select products and add to cart
-        await productsPage.CheckProductExist(product1);
+        await productsPage.CheckProductExist(product);
         // note down product price on the products page
-        const priceLabel1 = await helper.GetItemPriceLabel(page, product1);
+        const priceLabel1 = await helper.GetItemPriceLabel(page, product);
         const productPrice1 = await helper.GetItemPrice(priceLabel1);
-        await productsPage.AddSelectedItem(product1);
+        await productsPage.AddSelectedItem(product);
 
         // go to cart and check
         await cartPage.GotoCart();
         await helper.CheckPageUrl(page, pageurl['cart-page']);
-        await expect(await cartPage.CheckProductExistInCart(product1)).toBeTruthy();
+        await expect(await cartPage.CheckProductExistInCart(product)).toBeTruthy();
         // note down product price in the cart
-        const priceLabel2 = await helper.GetItemPriceLabel(page, product1);
+        const priceLabel2 = await helper.GetItemPriceLabel(page, product);
         const productPrice2 = await helper.GetItemPrice(priceLabel2);
         await helper.ComparePrice(productPrice1, productPrice2);
 
@@ -72,9 +72,9 @@ test.describe('Shopping workflow', () => {
         await helper.CheckPageUrl(page, pageurl['form-page2']);
 
         // checkout - summary
-        await expect(await cartPage.CheckProductExistInCart(product1)).toBeTruthy();
+        await expect(await cartPage.CheckProductExistInCart(product)).toBeTruthy();
         // // note down product price on the checkout page
-        const priceLabel3 = await helper.GetItemPriceLabel(page, product1);
+        const priceLabel3 = await helper.GetItemPriceLabel(page, product);
         const productPrice3 = await helper.GetItemPrice(priceLabel3);
         await helper.ComparePrice(productPrice2, productPrice3);
 
