@@ -13,6 +13,17 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+
+  // Folder for test artifacts such as screenshots, videos, traces, etc.
+  outputDir: 'test-results',
+
+  /* Maximum time one test can run for. */
+  timeout: 30 * 1000,
+  expect: {
+    timeout: 5000,
+  },
+
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,17 +37,40 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://www.saucedemo.com/',
+
+    // Capture screenshot after each test failure.
+    screenshot: 'only-on-failure',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    testIdAttribute: 'data-test'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "setup",
+      testDir: "./",
+      testMatch: "saucedemo.setup.ts",
+    },
+    {
+      name: 'e2e-test',
+      testMatch: "/*.spec.ts",
+      dependencies: ["setup"],
+      use: { 
+        ...devices['Desktop Chrome'],
+        storageState: "./.auth/standard-user-auth.json", 
+      },
+    },
+
+    {
+      name: 'login-test',
+      testMatch: "/login.spec.ts",
+      use: { 
+        ...devices['Desktop Chrome'],
+      },
     },
 
     {
