@@ -1,7 +1,7 @@
 import type { Page, Locator } from '@playwright/test';
 import { expect } from "@playwright/test";
-import pageurl from '../test-data/page-url.json'
-import {Helper} from '../helper/commands'
+import pageurl from '../test-data/page-url.json';
+import {Helper} from '../helper/commands';
 
 let helper: Helper;
 helper = new Helper();
@@ -36,12 +36,12 @@ export class CartPage {
     
     async ContinueShopping() {
         await this.continueShoppingButton.click();
-        await expect(this.page.url()).toContain(pageurl['products-page'])
+        await expect(this.page.url()).toContain(pageurl['products-page']);
     }
 
     async CheckOut() {
         await this.checkoutButton.click();
-        await expect(this.page.url()).toContain(pageurl['form-page1'])
+        await expect(this.page.url()).toContain(pageurl['form-page1']);
     }
    
 
@@ -50,11 +50,11 @@ export class CartPage {
         if (index < amount){
             const item = await this.cartItem.nth(index);
             const button = await item.locator('button[class*="btn_inventory"]');
-            await helper.AddRemoveItem(button, 'Remove')
+            await helper.AddRemoveItem(button, 'Remove');
         }
 
         else {
-            console.log('Index '+index+' is greater than items amount '+amount)
+            console.log('Index '+index+' is greater than items amount '+amount);
         }
     }
 
@@ -65,7 +65,7 @@ export class CartPage {
     }
 
     async GotoProductDetails(item_name: string){       
-        await this.cartItemName.filter({ hasText: item_name }).click()
+        await this.cartItemName.filter({ hasText: item_name }).click();
         await helper.CheckPageUrl(this.page, pageurl['products-details-page']);
 
     }

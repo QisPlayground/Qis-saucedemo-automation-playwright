@@ -1,7 +1,7 @@
 import type { Page, Locator } from '@playwright/test';
 import { expect } from "@playwright/test";
-import pageurl from '../test-data/page-url.json'
-import {Helper} from '../helper/commands'
+import pageurl from '../test-data/page-url.json';
+import {Helper} from '../helper/commands';
 
 let helper: Helper;
 helper = new Helper();
@@ -22,12 +22,12 @@ export class ProductDetailsPage {
     
     async BackToProductsPage() {
         await this.backButton.click();
-        await expect(this.page.url()).toContain(pageurl['products-page'])
+        await expect(this.page.url()).toContain(pageurl['products-page']);
     }
 
     async AddRemoveProduct(action: string) {
         const button = await this.addRemoveButton;
-        await helper.AddRemoveItem(button, action)
+        await helper.AddRemoveItem(button, action);
     }
 
     async VerifyProductDetails(item_name: string) {

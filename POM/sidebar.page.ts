@@ -13,7 +13,7 @@ export class SidebarPage {
     constructor(public readonly page: Page) {
         this.menuButton = this.page.getByRole('button', { name: 'Open Menu' });
         this.allItems = this.page.getByTestId('inventory-sidebar-link');
-        this.about = this.page.getByTestId('about-sidebar-link');;
+        this.about = this.page.getByTestId('about-sidebar-link');
         this.logout = this.page.getByTestId('logout-sidebar-link');
         this.resetAppState = this.page.getByTestId('reset-sidebar-link');
         this.closeButton = this.page.getByRole('button', { name: 'Close Menu' });

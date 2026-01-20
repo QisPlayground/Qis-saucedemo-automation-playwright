@@ -1,6 +1,6 @@
 import type { Page, Locator } from '@playwright/test';
 import { expect } from "@playwright/test";
-import {Helper} from '../helper/commands'
+import {Helper} from '../helper/commands';
 
 let helper: Helper;
 helper = new Helper();
@@ -24,7 +24,7 @@ export class ProductsPage {
     }
 
 
-    async CheckProductExist(item_name: string) {
+    async CheckProductExist(item_name: string): Promise<Locator> {
         const item = await this.inventoryItem.filter({ hasText: item_name });
         await expect(item).toBeVisible();
         return item
@@ -40,13 +40,13 @@ export class ProductsPage {
     async AddSelectedItem(item_name: string) {
         const item = await this.CheckProductExist(item_name);
         const button = await item.locator('button[class*="btn_inventory"]');
-        await helper.AddRemoveItem(button, 'Add to cart')
+        await helper.AddRemoveItem(button, 'Add to cart');
     }
 
     async RemoveSelectedItem(item_name: string) {
         const item = await this.CheckProductExist(item_name);
         const button = await item.locator('button[class*="btn_inventory"]');
-        await helper.AddRemoveItem(button, 'Remove')
+        await helper.AddRemoveItem(button, 'Remove');
     }
 
     async SortProducts(option: string) {
