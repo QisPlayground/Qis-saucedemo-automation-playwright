@@ -1,14 +1,22 @@
 {
-  "name": "qis-saucedemo-automation-playwright",
-  "version": "1.0.0",
-  "description": "Automation test for saucedemo shopping website.",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.9"
-  }
+  },
+  "scripts": {},
+  "name": "saucedemo-automation-playwright",
+  "description": "Automation test for saucedemo shopping website.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "playwright": "^1.57.0",
+    "playwright-core": "^1.57.0",
+    "undici-types": "^7.16.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

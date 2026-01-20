@@ -17,11 +17,11 @@ export class Helper {
 
         if (action == text) {
             await selector.click();
-            console.log('Button'+text+'is clicked.')
+            console.log('Button '+text+' is clicked.')
         }
             
         else {
-            console.log('Action'+action+'cannot be done')
+            console.log('Action cannot be done since item is already '+action)
         }            
     }
 
@@ -48,6 +48,38 @@ export class Helper {
             await clearButton.click();
     }
 
+    async GetItemsAmount(page: Page) {   
+            const amount = await page.getByTestId('inventory-item').count();
+            return amount
+    }
+
+
+    async GetItemPrice(selector: Locator) {
+        const priceText = (await selector.innerText()).trim();
+        console.log('Item price is: '+priceText)
+        const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+        if (Number.isNaN(price)) throw new Error(`Cannot parse price from: "${priceText}"`);
+        return price
+    }
+    
+    async CalculateItemsPrices(page: Page) {    
+        const items = page.getByTestId('inventory-item')
+        const amount = await items.count();
+        let total_prices_in_cents = 0;
+
+        for (let i=0; i < amount; i++) {
+            console.log(i)
+            const item = items.nth(i)
+            const item_price_label = await item.getByTestId('inventory-item-price')
+            const price = await this.GetItemPrice(item_price_label)
+            const price_to_cents = Math.round(price*100)
+            
+            total_prices_in_cents += price_to_cents;            
+        }
+
+        const total_prices = total_prices_in_cents / 100;
+        return total_prices
+    }
 
 
 }

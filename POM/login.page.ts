@@ -9,10 +9,6 @@ export class LoginPage {
 
 
     constructor(public readonly page: Page) {
-/*      this.usernameBox = this.page.locator('input[data-test="username"]');
-        this.passwordBox = this.page.locator('input[data-test="password"]');;
-        this.loginButton = this.page.locator('input[data-test="login-button"]'); */
-
         this.usernameBox = this.page.getByTestId('username');
         this.passwordBox = this.page.getByTestId('password');;
         this.loginButton = this.page.getByTestId('login-button');
