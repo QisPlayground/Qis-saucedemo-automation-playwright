@@ -19,13 +19,14 @@ export class FormPage2 {
     }
 
 
-    async BackToCart() {  // same as in form1, move to commands
+    async BackToProductsPage() {  // same as in form1, move to commands
         await this.cancelButton.click();
-        await expect(this.page.url()).toContain(pageurl['cart-page']);
+        await expect(this.page.url()).toContain(pageurl['products-page']);
     }
 
     async FinishForm() {
         await this.finishButton.click();
+        await expect(this.page.url()).toContain(pageurl['confirm-page']);
     }
 
     async GetTotalPrice(): Promise<number> {
