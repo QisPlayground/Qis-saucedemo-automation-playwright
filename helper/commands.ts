@@ -97,6 +97,12 @@ export class Helper {
         }
     }
 
+    async SeedItemInCart(page: Page, i: number) {        
+        await page.evaluate((id) => {
+            localStorage.setItem('cart-contents', JSON.stringify([id]));}, i);
+
+    }
+    
 
 }
 

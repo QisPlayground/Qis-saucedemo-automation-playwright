@@ -31,9 +31,7 @@ test.describe('Cart tests', () => {
         await page.goto(pageurl['products-page']);
 
         // Seed one item in cart: product id 4
-        await page.evaluate(() => {
-            localStorage.setItem('cart-contents', JSON.stringify([4]));
-        });
+        await helper.SeedItemInCart(page, 4)
 
         await page.goto(pageurl['cart-page'])
 

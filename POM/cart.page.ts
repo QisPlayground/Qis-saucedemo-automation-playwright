@@ -69,6 +69,22 @@ export class CartPage {
         await helper.CheckPageUrl(this.page, pageurl['products-details-page']);
 
     }
+
+    async GetCartBadgeNumber( ): Promise<number>{       
+        const amount = await this.cartBadge.count();
+        if (amount > 0) {
+            const text = (await this.cartBadge.innerText()).trim();
+            const number = parseFloat(text.replace(/[^0-9.]/g, ''));
+            console.log('cart badge shows: '+number);
+            return number;
+        }
+
+        else {
+            console.log('cart badge shows 0');
+            return 0;
+        }
+
+    }
   
     
 }
