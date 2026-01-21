@@ -1,0 +1,23 @@
+{
+    "valid-info": {
+        "firstName": "aaa",
+        "lastName": "bbb",
+        "postalCode": "12345"
+    },
+    "no-firstName": {
+        "firstName": "",
+        "lastName": "bbb",
+        "postalCode": "12345"
+    },
+    "no-lastName": {
+        "firstName": "aaa",
+        "lastName": "",
+        "postalCode": "12345"
+    },
+    "no-postalCode": {
+        "firstName": "aaa",
+        "lastName": "bbb",
+        "postalCode": ""
+    }
+
+}

@@ -1,0 +1,10 @@
+    {
+      "login-page": "https://www.saucedemo.com/",
+      "products-page": "/inventory.html",
+      "products-details-page": "/inventory-item.html?id=",
+      "cart-page": "/cart.html",
+      "form-page1": "/checkout-step-one.html",
+      "form-page2": "/checkout-step-two.html",
+      "confirm-page": "/checkout-complete.html",
+      "about-page": "https://saucelabs.com/"
+    }
