@@ -77,6 +77,7 @@ test.describe('Shopping workflow', () => {
         const priceLabel3 = await helper.GetItemPriceLabel(page, product);
         const productPrice3 = await helper.GetItemPrice(priceLabel3);
         await helper.ComparePrice(productPrice2, productPrice3);
+        await formPage2.CheckPaymentInfo('#31337');
 
         const totalPrice = await formPage2.GetTotalPrice();
         console.log('Item total price is '+totalPrice);

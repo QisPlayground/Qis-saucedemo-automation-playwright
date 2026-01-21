@@ -36,8 +36,8 @@ export class FormPage2 {
         return price;
     }
 
-    async GetPaymentInfo() {
-        const text = (await this.paymentInfoValue.innerText()).trim();
+    async CheckPaymentInfo(paymentinfo: string) {
+        await expect(this.paymentInfoValue).toContainText(paymentinfo);
     }
     
 }

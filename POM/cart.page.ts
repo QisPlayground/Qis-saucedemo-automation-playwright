@@ -45,19 +45,6 @@ export class CartPage {
     }
    
 
-    async RemoveSelectedItem(index: number) {
-        const amount = await this.cartItem.count();
-        if (index < amount){
-            const item = await this.cartItem.nth(index);
-            const button = await item.locator('button[class*="btn_inventory"]');
-            await helper.AddRemoveItem(button, 'Remove');
-        }
-
-        else {
-            console.log('Index '+index+' is greater than items amount '+amount);
-        }
-    }
-
     async CheckProductExistInCart(item_name: string) : Promise<boolean> {      
         const matched = this.cartItemName.filter({ hasText: item_name });
         return (await matched.count()) > 0;
