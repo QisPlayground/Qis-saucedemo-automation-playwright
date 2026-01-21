@@ -15,7 +15,7 @@ export class FormPage2 {
         this.cancelButton = this.page.getByTestId('cancel');
         this.finishButton = this.page.getByTestId('finish');
         this.totalLabel = this.page.getByTestId('subtotal-label');
-        this.paymentInfoValue = this.page.getByTestId('payment-info-label');
+        this.paymentInfoValue = this.page.getByTestId('payment-info-value');
     }
 
 
