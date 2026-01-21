@@ -52,7 +52,7 @@ export default defineConfig({
   projects: [
     {
       name: "setup",
-      testDir: "./",
+      //testDir: "./",
       testMatch: "saucedemo.setup.ts",
     },
     {

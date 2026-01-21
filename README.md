@@ -149,6 +149,8 @@ Run tests in UI mode:
 
 `npx playwright test --ui`
 
+> Note: Run it from the project root, so it can show all testing projects with dependencies. 
+
 View the last HTML report:
 
 `npx playwright show-report`
