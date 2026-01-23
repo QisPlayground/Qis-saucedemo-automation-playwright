@@ -126,7 +126,10 @@ The workflow test is the most important part of shopping website. In this test, 
 
 1️⃣ Buy one product and pay
 
-In this test, it simulates a realistic user journey as login, add one item to the cart, fill the form, checkout and confirm. 
+In this test, it simulates a realistic user journey as:
+
+login -> add an item to the cart -> fill user info -> checkout -> confirm -> complete
+
 In addition, it checks the price consistency accross the products page, the cart, and the checkout summary. 
 
 2️⃣ Buy multiple products and pay
@@ -148,6 +151,8 @@ Run all tests:
 Run tests in UI mode: 
 
 `npx playwright test --ui`
+
+> Note: Run it from the project root, so it can show all testing projects with dependencies. 
 
 View the last HTML report:
 

@@ -46,15 +46,6 @@ test.describe('Products page tests', () => {
 
     });
 
-    test('Sorting by name', async ({ page }) => {
-
-    });
-
-    test('Sorting by price', async ({ page }) => {
-
-    });
-
-
 
     test.afterEach(screenshotOnFailure)
 
